@@ -2,7 +2,9 @@
 
 ## Overview
 
-In this repository we setup two projects, a Weather UI and a Weather API.  The WeatherUI will make requests to the WeatherAPI and both services will be instrumented using the [Wavefront ASP.NET Core SDK](https://github.com/wavefrontHQ/wavefront-aspnetcore-sdk-csharp) to allow the applications to communicate with Wavefront.
+In this repository we setup a Weather Forecast Application that consists of two projects, a Weather UI and a Weather API.  The WeatherUI will make requests to the WeatherAPI and both services will be instrumented using the [Wavefront ASP.NET Core SDK](https://github.com/wavefrontHQ/wavefront-aspnetcore-sdk-csharp) to allow the applications to communicate with Wavefront.
+
+![wavefront.com](img/wavefront.png)
 
 1. Create a new workspace directory and navigate to that directory
 
