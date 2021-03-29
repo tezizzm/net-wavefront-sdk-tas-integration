@@ -1,0 +1,19 @@
+applications:
+- name: WeatherUI
+  path: .\frontend\publish
+  buildpacks:
+  - https://github.com/cloudfoundry/dotnet-core-buildpack
+  services:
+  - wavefront-proxy
+  env:
+    ASPNETCORE_ENVIRONMENT: Development
+    ConnectionStrings:backend: http://WeatherAPI.apps.internal:8080
+- name: WeatherAPI
+  path: .\backend\publish
+  routes:
+  - route: WeatherAPI.apps.internal
+  buildpacks:
+  - https://github.com/cloudfoundry/dotnet-core-buildpack
+  env:
+    ASPNETCORE_ENVIRONMENT: Development
+    wavefront-direct-ingestion:Token: 600eb000-ba2e-4f2d-8662-4fefc63f43fb
