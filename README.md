@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this repository we setup a Weather Forecast Application that consists of two projects, a Weather UI and a Weather API.  The WeatherUI will make requests to the WeatherAPI and both services will be instrumented using the [Wavefront ASP.NET Core SDK](https://github.com/wavefrontHQ/wavefront-aspnetcore-sdk-csharp) to allow the applications to communicate with Wavefront.
+In this repository we setup a Weather Forecast Application that consists of two projects, a Weather UI and a Weather API.  The WeatherUI will make requests to the WeatherAPI and both services will be instrumented using the [Wavefront ASP.NET Core SDK](https://github.com/wavefrontHQ/wavefront-aspnetcore-sdk-csharp) to allow the applications to send metrics and traces to Wavefront.
 
 ![wavefront.com](img/wavefront.png)
 
@@ -100,7 +100,7 @@ In this repository we setup a Weather Forecast Application that consists of two 
                public string Token { get; set; }
          }
 
-         public static IServiceCollection AddSteeltoeWavefrontProxy(this IServiceCollection services, IConfiguration configuration)
+         public static IServiceCollection AddWavefrontProxy(this IServiceCollection services, IConfiguration configuration)
          {
                var waveFrontProxyConfiguration = 
                   configuration.GetSection(WavefrontProxyOptions.WavefrontProxy).Get<WavefrontProxyOptions>();
@@ -134,7 +134,7 @@ In this repository we setup a Weather Forecast Application that consists of two 
                return services;
          }
 
-         public static IServiceCollection AddSteeltoeWavefrontDirectIngestion(this IServiceCollection services, IConfiguration configuration)
+         public static IServiceCollection AddWavefrontDirectIngestion(this IServiceCollection services, IConfiguration configuration)
          {
                var waveFrontDirectIngestionConfiguration = 
                   configuration.GetSection(WavefrontDirectIngestionOptions.WavefrontDirectIngestion)
@@ -230,7 +230,7 @@ In this repository we setup a Weather Forecast Application that consists of two 
    1. Add the following using statement:
 
       ```cs
-      using wavefront_sdk
+      using wavefront_sdk;
       ```
 
    2. In the last line of the `ConfigureServices` Method add the following line:
